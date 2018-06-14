@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.6/jsxgraph.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.6/jsxgraphcore.js"></script>
+</head>
+
+<body>
+  <p id='myOutput'>&nbsp</p>
+  <div id="jxgbox" class="jxgbox" style="width:600px; height:300px;"></div>
+  <script> 
+    var brd = JXG.JSXGraph.initBoard('jxgbox',{boundingbox:[-4,4,4,-4], keepaspectratio:true, 
+      pan: {
+        needShift: true,
+        needTwoFingers: true,
+        enabled: true
+      }
+    });
+    var myPoint = brd.create('point',[1,1], {size:5, fixed: true});
+    var myPoint2 = brd.create('point',[-1,1], {size:5});
+    
+  </script>
+  <script src="./customCtxMenu.js"></script>
+  <script>
+    var opts = {
+      menu: [{
+          label: "open",
+          iconClass: "fa fa-folder-open",
+          onClick: function () {
+            alert("OPEN");
+            console.log(this);
+          }
+        },
+        {
+          label: "Open with",
+          iconClass: "fa fa-external-link",
+          menu: [{
+              label: "New Tab",
+              iconClass: "fa fa-window-maximize",
+              onClick: function () {
+                alert("NEW TAB");
+                console.log(this);
+              }
+            },
+            {
+              label: "New Window",
+              onClick: function () {},
+              iconClass: "fa fa-window-restore"
+            }
+          ]
+        },
+        {
+          label: "close",
+          iconClass: "fa fa-times",
+          onClick: function () {
+            alert("CLOSE");
+            console.log(this);
+          }
+        }
+      ]
+    };
+    var cmenu = new contextMenu('.jxgbox', opts);
+  </script>
+
+</body>
+
+</html>

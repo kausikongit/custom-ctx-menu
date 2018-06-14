@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+
+<body>
+  <header class="primary-header">
+    <div class="container">
+      <h1 class="primary-header__title">
+        My Tasks App <small>using custom context menus</small>
+      </h1>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container">
+      <ul class="tasks">
+        <li class="task" data-id="3">
+          <div class="task__content">
+            Go To Grocery
+          </div>
+          <div class="task__actions">
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-times"></i>
+          </div>
+        </li>
+        <li class="task" data-id="2">
+          <div class="task__content">
+            Type Some Code
+          </div>
+          <div class="task__actions">
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-times"></i>
+          </div>
+        </li>
+        <li class="task" data-id="1">
+          <div class="task__content">
+            Build An App
+          </div>
+          <div class="task__actions">
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-times"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+  
+
+  <script src="./customCtxMenu.js"></script>
+  <script>
+    var opts = {
+      menu: [{
+          label: "open",
+          iconClass: "fa fa-folder-open",
+          onClick: function () {
+            alert("OPEN");
+            console.log(this);
+          }
+        },
+        {
+          label: "Open with",
+          iconClass: "fa fa-external-link",
+          menu: [{
+              label: "New Tab",
+              iconClass: "fa fa-window-maximize",
+              onClick: function () {
+                alert("NEW TAB");
+                console.log(this);
+              }
+            },
+            {
+              label: "New Window",
+              onClick: function () {},
+              iconClass: "fa fa-window-restore"
+            }
+          ]
+        },
+        {
+          label: "close",
+          iconClass: "fa fa-times",
+          onClick: function () {
+            alert("CLOSE");
+            console.log(this);
+          }
+        }
+      ]
+    };
+
+    var cmenu = new contextMenu('.tasks', opts);
+  </script>
+
+</body>
+
+</html>
